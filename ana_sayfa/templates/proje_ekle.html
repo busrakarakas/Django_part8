@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block icerik %}
+<style>
+    .glass-kart {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(15px);
+        padding: 40px;
+        border-radius: 25px;
+        width: 450px;
+        margin: 50px auto;
+        color: white;
+        text-align: center;
+    }
+
+    /* Form elemanlarını düzenli tutmak için */
+    form p {
+        text-align: left;
+        margin-bottom: 15px;
+    }
+
+    /* Inputları güzelleştirelim */
+    input[type="text"], textarea, input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: none;
+        box-sizing: border-box; /* Kutuların taşmasını engeller */
+    }
+
+    /* Dosya seçim butonunu özel yapalım */
+    .file-wrapper {
+        margin: 15px 0;
+        text-align: left;
+    }
+    
+    /* Standart dosya inputu yerine şık bir görünüm */
+    input[type="file"]::file-selector-button {
+        background: #764ba2;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .btn-kaydet {
+        background: #764ba2;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: bold;
+        width: 100%;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="glass-kart">
+    <h2>Yeni Proje Ekle</h2>
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        
+        <button type="submit" class="btn-kaydet">Kaydet</button>
+    </form>
+    
+    <p style="margin-top: 20px;">
+        <a href="{% url 'anasayfa' %}" style="color: white;">İptal et ve dön</a>
+    </p>
+</div>
+{% endblock %}

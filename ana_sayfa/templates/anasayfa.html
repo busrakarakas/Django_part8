@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block icerik %}
+<div style="text-align: center; padding: 20px;">
+    <h1>Hoş Geldin, Büşra!</h1>
+    <hr style="width: 50%; opacity: 0.3; margin: 20px auto;">
+    
+    <a href="{% url 'proje_ekle' %}" style="background: #9d50bb; padding: 10px 20px; color: white; border-radius: 8px; text-decoration: none;">+ Yeni Proje Ekle</a>
+
+    {% for proje in projeler %}
+        <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px; margin: 20px auto; border-radius: 15px; width: 80%; max-width: 500px; border: 1px solid rgba(255,255,255,0.2);">
+            <h3>{{ proje.baslik }}</h3>
+            <p>{{ proje.detay|truncatewords:10 }}</p>
+            <a href="{% url 'proje_detay' proje.id %}" style="color: #ffcc00; text-decoration: none;">Daha Fazla</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

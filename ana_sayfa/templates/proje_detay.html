@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block icerik %}
+<div style="text-align: center; padding: 50px; color: white;">
+    <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; width: 300px; margin: auto;">
+        <h1>{{ proje.baslik }}</h1>
+        <p>{{ proje.detay }}</p>
+        
+        <p><strong>Durum:</strong> 
+            {% if proje.durum %}
+                <span style="color: #2ecc71; font-size: 1.2em;">&#10004; Tamamlandı</span>
+            {% else %}
+                <span style="color: #e74c3c; font-size: 1.2em;">&#10006; Tamamlanmadı</span>
+            {% endif %}
+        </p>
+        
+        <a href="{% url 'anasayfa' %}" style="color: #ffcc00;">Geri Dön</a>
+    </div>
+</div>
+{% endblock %}
